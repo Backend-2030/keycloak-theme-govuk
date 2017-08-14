@@ -38,5 +38,6 @@ jspm_packages
 
 # Built files
 govuk/login/resources/
+govuk/account/resources/
 govuk-internal/login/resources/
 dist/
