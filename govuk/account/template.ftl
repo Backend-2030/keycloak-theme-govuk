@@ -1,4 +1,4 @@
-<#macro mainLayout active bodyClass>
+<#macro mainLayout active bodyClass="" displayInfo=false displayMessage=true>
 <!DOCTYPE html>
 
 <#-- Attempt to reverse-engineer code for page’s current language, as Keycloak does not currently make this available -->
@@ -130,12 +130,10 @@
     <div id="global-header-bar"></div>
 
     <#-- End GOV.UK Template header -->
-    <main id="content" role="main">
-        <div><#nested "back"></div>
 
-        <div class="grid-row">
-            <div class="column-two-thirds">
-                <h1 class="heading-large"><#nested "title"></h1>
+
+    <main id="content" role="main">
+                <h1 class="heading-large">Account Management</h1>
 
 
                 <#-- The GOV.UK Template is not designed for custom logos, so remove the Keycloak template’s logo HTML -->
@@ -167,7 +165,7 @@
                         <div id="kc-content" class="${properties.kcContentClass!}">
                             <div id="kc-content-wrapper" class="${properties.kcContentWrapperClass!}">
 
-                                <#if displayMessage!false && message?has_content>
+                                <#if displayMessage && message?has_content>
                                     <#if message.type = 'error'>
                                         <div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
                                             <h1 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
@@ -189,36 +187,38 @@
                                         </div>
                                     </#if>
                                 </#if>
+                                <div class="grid-row">
 
-                                <div id="kc-form" class="${properties.kcFormAreaClass!}">
-                                    <div id="kc-form-wrapper" class="${properties.kcFormAreaWrapperClass!}">
-                                      <ul>
-                                        <li class="<#if active=='account'>active</#if>"><a href="${url.accountUrl}">${msg("account")}</a></li>
-                                        <#if features.passwordUpdateSupported>
-                                          <li class="<#if active=='password'>active</#if>"><a href="${url.passwordUrl}">${msg("password")}</a></li>
-                                        </#if>
-                                        <li class="<#if active=='totp'>active</#if>"><a href="${url.totpUrl}">${msg("authenticator")}</a></li>
-                                        <#if features.identityFederation>
-                                          <li class="<#if active=='social'>active</#if>"><a href="${url.socialUrl}">${msg("federatedIdentity")}</a></li>
-                                        </#if>
-                                        <li class="<#if active=='sessions'>active</#if>"><a href="${url.sessionsUrl}">${msg("sessions")}</a></li>
-                                        <li class="<#if active=='applications'>active</#if>"><a href="${url.applicationsUrl}">${msg("applications")}</a></li>
-                                        <#if features.log>
-                                          <li class="<#if active=='log'>active</#if>"><a href="${url.logUrl}">${msg("log")}</a></li>
-                                        </#if>
-                                      </ul>
-                                        <#nested "content">
-                                    </div>
-                                </div>
+  <div class="column-one-third">
+    <ul class="list">
+        <li class="<#if active=='account'>active</#if>"><a href="${url.accountUrl}">${msg("account")}</a></li>
+        <#if features.passwordUpdateSupported><li class="<#if active=='password'>active</#if>"><a href="${url.passwordUrl}">${msg("password")}</a></li></#if>
+        <li class="<#if active=='totp'>active</#if>"><a href="${url.totpUrl}">${msg("authenticator")}</a></li>
+        <#if features.identityFederation><li class="<#if active=='social'>active</#if>"><a href="${url.socialUrl}">${msg("federatedIdentity")}</a></li></#if>
+        <li class="<#if active=='sessions'>active</#if>"><a href="${url.sessionsUrl}">${msg("sessions")}</a></li>
+        <li class="<#if active=='applications'>active</#if>"><a href="${url.applicationsUrl}">${msg("applications")}</a></li>
+        <#if features.log><li class="<#if active=='log'>active</#if>"><a href="${url.logUrl}">${msg("log")}</a></li></#if>
+    </ul>
+  </div>
+
+  <div class="column-two-thirds">
+    <div id="kc-form" class="${properties.kcFormAreaClass!}">
+        <div id="kc-form-wrapper" class="${properties.kcFormAreaWrapperClass!}">
+            <#nested "content">
+        </div>
+    </div>
+
+  </div>
+
+</div>
 
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
             <div class="column-one-third">
-                <#if displayInfo!false>
+                <#if displayInfo>
                     <div id="kc-info" class="${properties.kcInfoAreaClass!}">
                         <div id="kc-info-wrapper" class="${properties.kcInfoAreaWrapperClass!}">
                             <#nested "info">
@@ -226,8 +226,9 @@
                     </div>
                 </#if>
             </div>
-        </div>
     </main>
+
+
     <#-- Start GOV.UK Template footer -->
 
     <footer class="group js-footer" id="footer" role="contentinfo">
@@ -258,6 +259,6 @@
     <script>if (typeof window.GOVUK === 'undefined') document.body.className = document.body.className.replace('js-enabled', '');</script>
 
     <#-- End GOV.UK Template footer -->
-    </body>
-    </html>
+</body>
+</html>
 </#macro>
