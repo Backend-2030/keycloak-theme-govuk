@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="col-sm-10 col-md-10">
-                    <input type="text" class="form-control" id="user.attributes.street" name="user.attributes.street" value="${(account.attributes.street!'')?html}"/>
+                    <input type="text" class="form-control" id="user.attributes.street" name="user.attributes.street" value="${(register.formData.street!'')?html}"/>
                 </div>
             </div>
             <div class="form-group">
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="col-sm-10 col-md-10">
-                    <input type="text" class="form-control" id="user.attributes.locality" name="user.attributes.locality" value="${(account.attributes.locality!'')?html}"/>
+                    <input type="text" class="form-control" id="user.attributes.locality" name="user.attributes.locality" value="${(register.formData.locality!'')?html}"/>
                 </div>
             </div>
             <div class="form-group">
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="col-sm-10 col-md-10">
-                    <input type="text" class="form-control" id="user.attributes.region" name="user.attributes.region" value="${(account.attributes.region!'')?html}"/>
+                    <input type="text" class="form-control" id="user.attributes.region" name="user.attributes.region" value="${(register.formData.region!'')?html}"/>
                 </div>
             </div>
             <div class="form-group">
@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="col-sm-10 col-md-10">
-                    <input type="text" class="form-control" id="user.attributes.postal_code" name="user.attributes.postal_code" value="${(account.attributes.postal_code!'')?html}"/>
+                    <input type="text" class="form-control" id="user.attributes.postal_code" name="user.attributes.postal_code" value="${(register.formData.postal_code!'')?html}"/>
                 </div>
             </div>
             <div class="form-group">
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="col-sm-10 col-md-10">
-                    <input type="text" class="form-control" id="user.attributes.country" name="user.attributes.country" value="${(account.attributes.country!'')?html}"/>
+                    <input type="text" class="form-control" id="user.attributes.country" name="user.attributes.country" value="${(register.formData.country!'')?html}"/>
                 </div>
             </div>
             <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('email',properties.kcFormGroupErrorClass!)}">
