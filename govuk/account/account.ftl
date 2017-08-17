@@ -102,7 +102,7 @@
 
         <div class="form-group">
             <div class="col-sm-2 col-md-2">
-                <label for="user.attributes.country" class="control-label">${msg("mobile_number")}</label>
+                <label for="user.attributes.mobile_number" class="control-label">${msg("mobile_number")}</label>
             </div>
 
             <div class="col-sm-10 col-md-10">
